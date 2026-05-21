@@ -1,0 +1,22 @@
+{
+  "default_action": "allow",
+  "rules": [
+    {
+      "id": "deny-shell-secrets",
+      "action": "deny",
+      "method": "tools/call",
+      "tool_name": "shell",
+      "param_regex": "(cat\\s+.*\\.env|printenv|aws\\s+secretsmanager|gcloud\\s+secrets)",
+      "reason": "Shell command appears to access secrets"
+    },
+    {
+      "id": "deny-destructive-git",
+      "action": "deny",
+      "method": "tools/call",
+      "tool_name": "shell",
+      "param_regex": "(git\\s+reset\\s+--hard|git\\s+clean\\s+-fd)",
+      "reason": "Destructive git operation requires approval"
+    }
+  ]
+}
+

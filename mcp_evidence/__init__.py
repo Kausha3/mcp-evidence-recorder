@@ -1,0 +1,2 @@
+"""MCP Evidence Recorder."""
+

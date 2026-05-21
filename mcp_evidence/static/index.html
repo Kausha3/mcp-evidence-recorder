@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MCP Evidence Recorder</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>MCP Evidence Recorder</h1>
+        <p id="target">Loading target...</p>
+      </div>
+      <div class="actions">
+        <input id="admin-token" type="password" placeholder="Admin token" autocomplete="off" />
+        <button id="refresh">Refresh</button>
+        <button id="export-json">Export JSON</button>
+        <button id="export-csv">Export CSV</button>
+        <button id="export-bundle">Bundle</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="metrics">
+        <div>
+          <span class="label">Chain</span>
+          <strong id="chain">Checking</strong>
+        </div>
+        <div>
+          <span class="label">Events</span>
+          <strong id="event-count">0</strong>
+        </div>
+        <div>
+          <span class="label">Risk Events</span>
+          <strong id="risk-count">0</strong>
+        </div>
+        <div>
+          <span class="label">Denied</span>
+          <strong id="denied-count">0</strong>
+        </div>
+      </section>
+
+      <section class="filters">
+        <input id="search" placeholder="Search method, tool, request, or result" />
+        <input id="session" placeholder="Session id" />
+        <select id="risk">
+          <option value="">Any risk</option>
+          <option value="secret_leak">Secret leak</option>
+          <option value="pii">PII</option>
+          <option value="prompt_injection_marker">Prompt injection marker</option>
+        </select>
+      </section>
+
+      <section class="layout">
+        <div class="panel">
+          <h2>Recent Events</h2>
+          <div id="events" class="events"></div>
+        </div>
+        <aside class="panel">
+          <h2>Sessions</h2>
+          <div id="sessions" class="sessions"></div>
+        </aside>
+      </section>
+    </main>
+
+    <template id="event-template">
+      <article class="event">
+        <div class="event-head">
+          <strong class="event-title"></strong>
+          <span class="event-time"></span>
+        </div>
+        <div class="event-meta"></div>
+        <pre></pre>
+      </article>
+    </template>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
