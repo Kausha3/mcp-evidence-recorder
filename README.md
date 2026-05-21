@@ -4,6 +4,8 @@ A production-minded MVP for recording, searching, and exporting evidence from MC
 
 It runs as an HTTP sidecar in front of a streamable HTTP MCP server. Every proxied call is redacted, risk-scanned, written to SQLite, and chained with SHA-256 hashes so tampering can be detected later.
 
+This is an early MVP, not a complete security product and not a substitute for network isolation, identity controls, review workflows, or vendor-supported MCP governance. Treat audit logs and evidence bundles as sensitive data.
+
 ## Features
 
 - HTTP MCP proxy at `/mcp`
@@ -21,6 +23,10 @@ It runs as an HTTP sidecar in front of a streamable HTTP MCP server. Every proxi
 - Docker and docker-compose packaging
 - Optional bearer-token auth for admin APIs and MCP proxy traffic
 - Stdio MCP bridge for local stdio servers
+
+## License
+
+MIT. See [LICENSE](LICENSE).
 
 ## Run locally
 
